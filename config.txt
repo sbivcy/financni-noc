@@ -1,0 +1,12 @@
+Stocks[2]:
+Stock('Amogus Inc', 'SUS', 250, 0.1)
+Stock('Holeček Semiconductors', 'HOL', 500, 0.03)
+
+Traders[3]:
+Trader('dr. Pepek', 69, 5000000)
+Trader('námořník', 420, 2000)
+Trader('Franta', 123, 100000)
+
+Markets[2]:
+Market('Market0', 123456)
+Market('Market1', 234567)
