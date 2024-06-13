@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href='{{url_for("static", filename="style.css")}}'>
+    </head>
+    <body>
+        <h1>Trh: {{market.name}}</h1>
+        <h3>Přihlášený hráč: {{user.name}}</h3>
+        <h3>Peníze: {{user.money}} fň</h3>
+        <form action="buy" method="POST">
+            <table>
+                <tr>
+                    <th>Název firmy</th>
+                    <th>Ticker</th>
+                    <th>Vlastníš</th>
+                    <th>Cena za kus</th>
+                    <th>Maximální nákup</th>
+                    <th>Nakoupit</th>
+                    <th>Prodat</th>
+                </tr>
+            {% for t in table %}
+                <tr>
+                    {% for i in range(5) %}
+                        <td>{{t[i]}}</td>
+                    {% endfor %}
+                    <td><input type="text" id="{{t[1]}}/buy" name="{{t[1]}}/buy"></td>
+                    <td><input type="text" id="{{t[1]}}/sell" name="{{t[1]}}/sell"></td>
+                </tr>
+            {% endfor %}
+                <tr>
+                    <td colspan=7>
+                        <button style="width: 100%;">Odeslat a odhlásit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

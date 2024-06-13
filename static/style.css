@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    color: #aaa;
+    font-size: 14px;
+    background-color: #222;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    border: 1px solid #777;
+    background-color: #333;
+    color: #ccc;
+}
+
+td {
+    border: 1px solid #555;
+}
+
+h1 {
+    color: #eee;
+    font-size: 23px;
+    margin: 0px;
+}
+
+h2 {
+    color: #ddd;
+    font-size: 20px;
+    margin: 0px;
+}
+
+h3 {
+    color: #ccc;
+    font-size: 18px;
+    margin: 0px;
+}
+
+h4 {
+    color: #bbb;
+    font-size: 16px;
+    margin: 0px;
+}
+
+p {
+    margin: 0px;
+}
+
+input {
+    color: #aaa;
+    background-color: #222;
+    border-width: 0;
+    margin: 0;
+}
+
+button {
+    color: #aaa;
+    background-color: #222;
+    font-size: 16px;
+    border: 2px solid #484;
+}

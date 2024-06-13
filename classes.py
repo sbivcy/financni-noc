@@ -63,7 +63,6 @@ class Trader:
         return f"Trader('{self.name}', {self.code}, {self.money}, {self.stocks})"
 
 
-
 class Market:
     all_markets = {}
 
@@ -101,37 +100,44 @@ class Market:
         try:
             trader = Trader.all_traders[trader_num]
         except KeyError:
-            raise GameException("player not found")
+            raise GameException("Hráč neexistuje.")
 
         try:
             if trader.stocks[stock_short] < -stock_amount:
                 raise GameException()
         except KeyError:
-            raise GameException("stock not found")
+            raise GameException("Akcie neexistuje.")
         except GameException:
-            raise GameException("not enough stock to sell")
+            raise GameException("Nedostatek akcií k prodeji.")
 
         if trader.money < (stock_amount * self.stocks[stock_short][2]):
-            raise GameException("not enough money to buy")
+            raise GameException("Nedostatek peněz pro nákup.")
 
         if self.stocks[stock_short][0] < stock_amount:
-            raise GameException("not enough stock to sell")
+            raise GameException("Nedostatek akcií na trhu.")
 
         trader.stocks[stock_short] += stock_amount
         trader.money -= stock_amount * self.stocks[stock_short][2]
         self.stocks[stock_short][0] -= stock_amount
 
 
+def update_prices():
+    for stock in Stock.all_stocks.values():
+        stock.random_tick()
+    for market in Market.all_markets.values():
+        market.update_prices()
+
+
 def save(save_file: str):
     save_str = f"Stocks[{len(Stock.all_stocks)}]:\n"
     for stock in Stock.all_stocks.values():
-        save_str += stock.save() + "\n"
+        save_str += f"{stock.save()}\n"
     save_str += f"\nTraders[{len(Trader.all_traders)}]:\n"
     for trader in Trader.all_traders.values():
-        save_str += trader.save() + "\n"
+        save_str += f"{trader.save()}\n"
     save_str += f"\nMarkets[{len(Market.all_markets)}]:\n"
     for market in Market.all_markets.values():
-        save_str += market.save() + "\n"
+        save_str += f"{market.save()}\n"
     with open(save_file, "w") as f:
         f.write(save_str)
 
