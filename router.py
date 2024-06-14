@@ -45,7 +45,6 @@ def make_table(market, user):
         table.append([stock.name, stock.short, amount, price, max_buy])
     return table
 
-
 @app.route("/buy", methods=["POST"])
 def buy():
     market = Market.all_markets[session["marketID"]]
@@ -66,7 +65,6 @@ def buy():
         update_prices()
     save("save.txt")
     return redirect(url_for("home"))
-
 
 @app.route("/highscores")
 def highscores():
